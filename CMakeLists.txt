@@ -48,22 +48,22 @@ set(RTL_SRCS
 
 # invoke verilator
 find_package(verilator HINTS ${VERILATOR_ROOT})
-# add_executable(verilator_sim src/sim_main.cpp)
-# add_library(CrossVerify STATIC src/CrossVerify.cpp)
-# target_include_directories(
-#     CrossVerify
-#     PRIVATE
-#         example-iss/include
-#         /opt/verilator/share/verilator/include
-#         /opt/verilator/share/verilator/include/vltstd
-# )
-# verilate(verilator_sim
-#     PREFIX VTestbench
-#     TOP_MODULE CrossVerify
-#     TRACE_FST
-#     SOURCES ${RTL_SRCS}
-#     VERILATOR_ARGS -sv --timing --trace-structs
-# )
-# target_link_libraries(CrossVerify PUBLIC iss)
-# target_link_libraries(verilator_sim PRIVATE CrossVerify)
+add_executable(verilator_sim src/sim_main.cpp)
+add_library(CrossVerify STATIC src/CrossVerify.cpp)
+target_include_directories(
+    CrossVerify
+    PRIVATE
+        example-iss/include
+        /opt/verilator/share/verilator/include
+        /opt/verilator/share/verilator/include/vltstd
+)
+verilate(verilator_sim
+    PREFIX VTestbench
+    TOP_MODULE CrossVerify
+    TRACE_FST
+    SOURCES ${RTL_SRCS}
+    VERILATOR_ARGS -sv --timing --trace-structs
+)
+target_link_libraries(CrossVerify PUBLIC iss)
+target_link_libraries(verilator_sim PRIVATE CrossVerify)
 
