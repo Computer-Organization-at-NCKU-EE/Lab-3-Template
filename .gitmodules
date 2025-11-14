@@ -1,0 +1,9 @@
+[submodule "rtl"]
+	path = rtl
+	url = https://github.com/Computer-Organization-at-NCKU-EE/Single-Cycle-CPU-Skeleton.git
+[submodule "runtime"]
+	path = runtime
+	url = https://github.com/Computer-Organization-at-NCKU-EE/Base-Runtime.git
+[submodule "example-iss"]
+	path = example-iss
+	url = https://github.com/Computer-Organization-at-NCKU-EE/ISA-Simulator.git
